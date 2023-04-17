@@ -1,0 +1,7 @@
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\bin\Debug\consolapp1_test.exe.config
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\bin\Debug\consolapp1_test.exe
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\bin\Debug\consolapp1_test.pdb
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\obj\Debug\consolapp1_test.csproj.AssemblyReference.cache
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\obj\Debug\consolapp1_test.csproj.CoreCompileInputs.cache
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\obj\Debug\consolapp1_test.exe
+C:\Users\SeungHyun_LEE\source\repos\consolapp1_test\consolapp1_test\obj\Debug\consolapp1_test.pdb
