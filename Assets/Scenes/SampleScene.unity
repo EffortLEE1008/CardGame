@@ -825,6 +825,9 @@ MonoBehaviour:
   - {fileID: -1008664820, guid: 1119b4f9fe4b89a48892125677e9ba9c, type: 3}
   - {fileID: 1683366407, guid: 1119b4f9fe4b89a48892125677e9ba9c, type: 3}
   scoretext: {fileID: 1673638432}
+  sp_array:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &998042257
 Transform:
   m_ObjectHideFlags: 0

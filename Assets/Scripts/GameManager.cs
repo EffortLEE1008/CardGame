@@ -20,24 +20,36 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text scoretext;
 
+    [SerializeField]
+    SpriteRenderer[] sp_array;
+
     
 
     void Start()
     {
         UnduplicateRandom(randnum_lst);
-     
-        SpriteRenderer sp_card1 = card[0].GetComponent<SpriteRenderer>();
-        sp_card1.sprite = card_image[randnum_lst[0]];
-        card_lst.Add(card_image[randnum_lst[0]].name);
-        card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[0]].name.Substring(0,2)));
-        card_lst_shapeOnly.Add(card_image[randnum_lst[0]].name.Substring(2, 1));
-        
 
-        SpriteRenderer sp_card2 = card[1].GetComponent<SpriteRenderer>();
-        sp_card2.sprite = card_image[randnum_lst[1]];
+        Debug.Log(card_image[0].name);
+
+        sp_array[0] = card[0].GetComponent<SpriteRenderer>();
+        sp_array[0].sprite = card_image[1];
+        card_lst.Add(card_image[1].name);
+        card_lst_numOnly.Add(int.Parse(card_image[1].name.Substring(0,2)));
+        card_lst_shapeOnly.Add(card_image[1].name.Substring(2, 1));
+
+        //SpriteRenderer sp_card1 = card[0].GetComponent<SpriteRenderer>();
+        //sp_card1.sprite = card_image[randnum_lst[0]];
+        //card_lst.Add(card_image[randnum_lst[0]].name);
+        //card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[0]].name.Substring(0,2)));
+        //card_lst_shapeOnly.Add(card_image[randnum_lst[0]].name.Substring(2, 1));
+        
+        sp_array[1] = card[1].GetComponent<SpriteRenderer>();
+        sp_array[1].sprite = card_image[randnum_lst[1]];
         card_lst.Add(card_image[randnum_lst[1]].name);
         card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[1]].name.Substring(0, 2)));
         card_lst_shapeOnly.Add(card_image[randnum_lst[1]].name.Substring(2, 1));
+
+  
 
         SpriteRenderer sp_card3 = card[2].GetComponent<SpriteRenderer>();
         sp_card3.sprite = card_image[randnum_lst[2]];
