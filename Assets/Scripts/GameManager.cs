@@ -9,6 +9,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Select_card[] card;
 
+    public Camera getCamera;
+
+    RaycastHit2D hit;
+
+    [SerializeField]
+    GameObject card_button;
+    int change_count = 0;
+    bool checkBatting = true;
+
     [SerializeField]
     Sprite[] card_image;
 
@@ -29,49 +38,14 @@ public class GameManager : MonoBehaviour
     {
         UnduplicateRandom(randnum_lst);
 
-        Debug.Log(card_image[0].name);
+        for (int i = 0; i < card.Length; i++)
+        {
+            sp_array[i] = card[i].GetComponent<SpriteRenderer>();
+            sp_array[i].sprite = card_image[randnum_lst[i]];
 
-        sp_array[0] = card[0].GetComponent<SpriteRenderer>();
-        sp_array[0].sprite = card_image[1];
-        card_lst.Add(card_image[1].name);
-        card_lst_numOnly.Add(int.Parse(card_image[1].name.Substring(0,2)));
-        card_lst_shapeOnly.Add(card_image[1].name.Substring(2, 1));
-
-        //SpriteRenderer sp_card1 = card[0].GetComponent<SpriteRenderer>();
-        //sp_card1.sprite = card_image[randnum_lst[0]];
-        //card_lst.Add(card_image[randnum_lst[0]].name);
-        //card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[0]].name.Substring(0,2)));
-        //card_lst_shapeOnly.Add(card_image[randnum_lst[0]].name.Substring(2, 1));
-        
-        sp_array[1] = card[1].GetComponent<SpriteRenderer>();
-        sp_array[1].sprite = card_image[randnum_lst[1]];
-        card_lst.Add(card_image[randnum_lst[1]].name);
-        card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[1]].name.Substring(0, 2)));
-        card_lst_shapeOnly.Add(card_image[randnum_lst[1]].name.Substring(2, 1));
-
-  
-
-        SpriteRenderer sp_card3 = card[2].GetComponent<SpriteRenderer>();
-        sp_card3.sprite = card_image[randnum_lst[2]];
-        card_lst.Add(card_image[randnum_lst[2]].name);
-        card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[2]].name.Substring(0, 2)));
-        card_lst_shapeOnly.Add(card_image[randnum_lst[2]].name.Substring(2, 1));
-
-        SpriteRenderer sp_card4 = card[3].GetComponent<SpriteRenderer>();
-        sp_card4.sprite = card_image[randnum_lst[3]];
-        card_lst.Add(card_image[randnum_lst[3]].name);
-        card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[3]].name.Substring(0, 2)));
-        card_lst_shapeOnly.Add(card_image[randnum_lst[3]].name.Substring(2, 1));
-
-        SpriteRenderer sp_card5 = card[4].GetComponent<SpriteRenderer>();
-        sp_card5.sprite = card_image[randnum_lst[4]];
-        card_lst.Add(card_image[randnum_lst[4]].name);
-        card_lst_numOnly.Add(int.Parse(card_image[randnum_lst[4]].name.Substring(0, 2)));
-        card_lst_shapeOnly.Add(card_image[randnum_lst[4]].name.Substring(2, 1));
+        }
 
 
-        
-        
         //Debug.Log(card_lst_numOnly[0] + " " + card_lst_numOnly[1] + " " + card_lst_numOnly[2] + " " + card_lst_numOnly[3] + " " + card_lst_numOnly[4]);
         //Debug.Log(sp_card1.sprite.name.GetType());
         //card[0].my_spriteRendere.sprite = card[0].my_sprite[3];
@@ -81,7 +55,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 pos = getCamera.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0))
+        {
+            
 
+            hit = Physics2D.Raycast(pos, Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.name);
+            }
+
+
+        }
+        
+
+        Debug.DrawRay(new Vector3(0, 0, 0), pos, Color.red);
 
     }
 
@@ -112,6 +102,17 @@ public class GameManager : MonoBehaviour
 
     public void Batting()
     {
+        if (checkBatting)
+        {
+            for (int i = 0; i < card.Length; i++)
+            {
+                card_lst.Add(sp_array[i].sprite.name);
+                card_lst_numOnly.Add(int.Parse(sp_array[i].sprite.name.Substring(0, 2)));
+                card_lst_shapeOnly.Add(sp_array[i].sprite.name.Substring(2, 1));
+            }
+            checkBatting = false;
+        }
+
         
         int paircount = 0;
 
@@ -199,6 +200,53 @@ public class GameManager : MonoBehaviour
             scoretext.text = "어이쿠... 아무것도아닌 탑카드에요 ㅠ";
         
 
+    }
+
+    public void ChangeCard()
+    {
+        if (change_count == 0)
+        {
+            card_button.SetActive(true);
+        }
+
+    }
+    public void Card0_change()
+    {
+        change_count++;
+        sp_array[0].sprite = card_image[randnum_lst[5]];
+        card_button.SetActive(false);
+    }
+
+    public void Card1_change()
+    {
+        change_count++;
+        //Debug.Log(randnum_lst[0]+" " + randnum_lst[1] + " " + randnum_lst[2] + " "
+        //    + randnum_lst[3] + " " +randnum_lst[4] + " " + randnum_lst[5]);
+        sp_array[1].sprite = card_image[randnum_lst[5]];
+
+        //Debug.Log(change_count);
+        card_button.SetActive(false);
+    }
+    public void Card2_change()
+    {
+        change_count++;
+        sp_array[2].sprite = card_image[randnum_lst[5]];
+        //Debug.Log(change_count);
+        card_button.SetActive(false);
+    }
+    public void Card3_change()
+    {
+        change_count++;
+        sp_array[3].sprite = card_image[randnum_lst[5]];
+        //Debug.Log(change_count);
+        card_button.SetActive(false);
+    }
+    public void Card4_change()
+    {
+        change_count++;
+        sp_array[4].sprite = card_image[randnum_lst[5]];
+        //Debug.Log(change_count);
+        card_button.SetActive(false);
     }
 
 
